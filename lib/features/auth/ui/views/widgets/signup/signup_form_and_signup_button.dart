@@ -7,37 +7,47 @@ class SignupFormAndSignButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 24,
-      children: [
-        const CustomTextFormField(
-          text: 'Username',
-          hintText: 'Ziad emad',
-          obscureText: false,
-        ),
-        const CustomTextFormField(
-          text: 'Email',
-          hintText: 'Jhonsmith@gmail.com',
-          obscureText: false,
-        ),
-        const CustomTextFormField(
-          text: 'Your address',
-          hintText: 'portsaeed street',
-          obscureText: false,
-        ),
-        const CustomTextFormField(
-          text: 'Password',
-          hintText: '*******',
-          obscureText: true,
-        ),
-        const CustomTextFormField(
-          text: 'Confirm Password',
-          hintText: '*******',
-          obscureText: true,
-        ),
-        AppButton(text: 'Sign up', onTap: () {}),
-      ],
+    return Form(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: 24,
+        children: [
+          const CustomTextFormField(
+            text: 'Username',
+            hintText: 'Ziad emad',
+            obscureText: false,
+          ),
+          const CustomTextFormField(
+            text: 'Email',
+            hintText: 'Jhonsmith@gmail.com',
+            obscureText: false,
+          ),
+          const CustomTextFormField(
+            text: 'Your address',
+            hintText: 'portsaeed street',
+            obscureText: false,
+          ),
+          CustomTextFormField(
+            text: 'Password',
+            hintText: '*******',
+            obscureText: true,
+            suffixIcon: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.remove_red_eye_outlined),
+            ),
+          ),
+          CustomTextFormField(
+            text: 'Confirm Password',
+            hintText: '*******',
+            obscureText: true,
+            suffixIcon: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.remove_red_eye_outlined),
+            ),
+          ),
+          AppButton(text: 'Sign up', onTap: () {}),
+        ],
+      ),
     );
   }
 }
