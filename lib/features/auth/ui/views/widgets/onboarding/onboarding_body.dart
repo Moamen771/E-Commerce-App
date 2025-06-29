@@ -2,7 +2,7 @@ import 'package:ecommerce/core/utlis/app_colors.dart';
 import 'package:ecommerce/core/widgets/app_button.dart';
 import 'package:ecommerce/features/auth/ui/views/widgets/account_checker_row.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/route_helpers/app_routes.dart';
+import '../../../../../../core/route_helpers/app_routes.dart';
 import 'onboarding_secrtion.dart';
 
 class OnboardingBody extends StatelessWidget {

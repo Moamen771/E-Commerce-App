@@ -1,4 +1,4 @@
-import 'package:ecommerce/features/auth/ui/views/widgets/onboarding_body.dart';
+import 'package:ecommerce/features/auth/ui/views/widgets/onboarding/onboarding_body.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingView extends StatelessWidget {

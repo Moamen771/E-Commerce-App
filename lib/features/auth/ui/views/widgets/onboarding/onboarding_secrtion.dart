@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utlis/app_assets.dart';
+import '../../../../../../core/utlis/app_assets.dart';
 
 class OnboardingSection extends StatelessWidget {
   const OnboardingSection({super.key});
