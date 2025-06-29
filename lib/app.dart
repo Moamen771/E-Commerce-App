@@ -1,7 +1,7 @@
-import 'package:ecommerce/core/utlis/route_helpers/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'core/route_helpers/app_routes.dart';
+import 'core/route_helpers/routes.dart';
 import 'core/utlis/app_colors.dart';
-import 'core/utlis/route_helpers/routes.dart';
 
 class EcommerceApp extends StatelessWidget {
   const EcommerceApp({super.key});
