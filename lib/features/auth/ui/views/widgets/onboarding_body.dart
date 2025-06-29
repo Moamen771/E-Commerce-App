@@ -1,7 +1,8 @@
 import 'package:ecommerce/core/utlis/app_colors.dart';
 import 'package:ecommerce/core/widgets/app_button.dart';
+import 'package:ecommerce/features/auth/ui/views/widgets/account_checker_row.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/utlis/route_helpers/app_routes.dart';
+import '../../../../../core/route_helpers/app_routes.dart';
 import 'onboarding_secrtion.dart';
 
 class OnboardingBody extends StatelessWidget {
@@ -23,29 +24,7 @@ class OnboardingBody extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.signupRoute);
                 },
               ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Already have an acc?',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.loginRoute);
-                    },
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        color: AppColors.orange,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const AccountCheckerRow(title: 'Login'),
             ],
           ),
         ),
