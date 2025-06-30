@@ -13,22 +13,22 @@ class SignupFormAndSignButton extends StatelessWidget {
         spacing: 24,
         children: [
           const CustomTextFormField(
-            text: 'Username',
+            title: 'Username',
             hintText: 'Ziad emad',
             obscureText: false,
           ),
           const CustomTextFormField(
-            text: 'Email',
+            title: 'Email',
             hintText: 'Jhonsmith@gmail.com',
             obscureText: false,
           ),
           const CustomTextFormField(
-            text: 'Your address',
+            title: 'Your address',
             hintText: 'portsaeed street',
             obscureText: false,
           ),
           CustomTextFormField(
-            text: 'Password',
+            title: 'Password',
             hintText: '*******',
             obscureText: true,
             suffixIcon: IconButton(
@@ -37,7 +37,7 @@ class SignupFormAndSignButton extends StatelessWidget {
             ),
           ),
           CustomTextFormField(
-            text: 'Confirm Password',
+            title: 'Confirm Password',
             hintText: '*******',
             obscureText: true,
             suffixIcon: IconButton(

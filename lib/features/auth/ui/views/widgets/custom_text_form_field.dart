@@ -4,14 +4,14 @@ import '../../../../../core/utlis/app_colors.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.text,
+    required this.title,
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
     this.prefixIcon,
   });
 
-  final String text;
+  final String title;
   final String hintText;
   final bool obscureText;
   final Widget? suffixIcon;
@@ -24,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
       spacing: 8,
       children: [
         Text(
-          text,
+          title,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
         ),
         TextFormField(
