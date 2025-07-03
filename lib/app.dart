@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'core/route_helpers/app_routes.dart';
-import 'core/route_helpers/routes.dart';
+import 'core/routing/app_routes.dart';
+import 'core/routing/routes.dart';
 import 'core/utlis/app_colors.dart';
 
 class EcommerceApp extends StatelessWidget {
@@ -13,7 +13,7 @@ class EcommerceApp extends StatelessWidget {
       theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Routes.onGenerateRoute,
-      initialRoute: AppRoutes.initialRoute,
+      initialRoute: AppRoutes.onboardingRoute,
     );
   }
 }
