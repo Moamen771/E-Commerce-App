@@ -1,59 +1,92 @@
 import 'package:flutter/material.dart';
 
-/// A set of handy Navigator extensions on BuildContext
-/// to simplify navigation calls and keep widget code clean.
+/// A one‑stop helper for all Navigator patterns.
 extension NavigatorHelper on BuildContext {
-  /// Pushes a new route onto the navigator stack.
-  Future<T?> push<T>(Widget page) =>
-      Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
+  /// 1. Push a Widget page onto the stack.
+  Future<T?> pushPage<T>(Widget page, {String? routeName, Object? arguments}) {
+    return Navigator.of(this).push<T>(
+      MaterialPageRoute(
+        settings: RouteSettings(name: routeName, arguments: arguments),
+        builder: (_) => page,
+      ),
+    );
+  }
 
-  /// Pushes a route and removes the current one.
-  Future<T?> pushReplacement<T, TO extends Object?>(
+  /// 2. Replace current with a Widget page.
+  Future<T?> pushReplacementPage<T, TO>(
     Widget page, {
-    TO? result,
-  }) => Navigator.of(this).pushReplacement<T, TO>(
-    MaterialPageRoute(builder: (_) => page),
-    result: result,
-  );
-
-  /// Pushes a route and removes all previous routes until the predicate returns true.
-  Future<T?> pushAndRemoveUntil<T>(Widget page, RoutePredicate predicate) =>
-      Navigator.of(this).pushAndRemoveUntil<T>(
-        MaterialPageRoute(builder: (_) => page),
-        predicate,
-      );
-
-  /// Pushes a named route onto the navigator stack.
-  Future<T?> pushNamed<T>(String routeName, {Object? arguments}) =>
-      Navigator.of(this).pushNamed<T>(routeName, arguments: arguments);
-
-  /// Pushes a named route and removes the current one.
-  Future<T?> pushReplacementNamed<T, TO extends Object?>(
-    String routeName, {
-    TO? result,
+    String? routeName,
     Object? arguments,
-  }) => Navigator.of(this).pushReplacementNamed<T, TO>(
-    routeName,
-    result: result,
-    arguments: arguments,
-  );
+    TO? result,
+  }) {
+    return Navigator.of(this).pushReplacement<T, TO>(
+      MaterialPageRoute(
+        settings: RouteSettings(name: routeName, arguments: arguments),
+        builder: (_) => page,
+      ),
+      result: result,
+    );
+  }
 
-  /// Pushes a named route and removes all previous routes until the predicate returns true.
+  /// 3. Push a Widget page and remove until predicate.
+  Future<T?> pushAndRemoveUntilPage<T>(
+    Widget page,
+    RoutePredicate predicate, {
+    String? routeName,
+    Object? arguments,
+  }) {
+    return Navigator.of(this).pushAndRemoveUntil<T>(
+      MaterialPageRoute(
+        settings: RouteSettings(name: routeName, arguments: arguments),
+        builder: (_) => page,
+      ),
+      predicate,
+    );
+  }
+
+  /// 4. Push a named route.
+  Future<T?> pushNamed<T>(String routeName, {Object? arguments}) {
+    return Navigator.of(this).pushNamed<T>(routeName, arguments: arguments);
+  }
+
+  /// 5. Replace with a named route.
+  Future<T?> pushReplacementNamed<T, TO>(
+    String routeName, {
+    Object? arguments,
+    TO? result,
+  }) {
+    return Navigator.of(this).pushReplacementNamed<T, TO>(
+      routeName,
+      arguments: arguments,
+      result: result,
+    );
+  }
+
+  /// 6. Push named and remove until predicate.
   Future<T?> pushNamedAndRemoveUntil<T>(
     String routeName,
     RoutePredicate predicate, {
     Object? arguments,
-  }) => Navigator.of(
-    this,
-  ).pushNamedAndRemoveUntil<T>(routeName, predicate, arguments: arguments);
+  }) {
+    return Navigator.of(
+      this,
+    ).pushNamedAndRemoveUntil<T>(routeName, predicate, arguments: arguments);
+  }
 
-  /// Pops the top-most route off the navigator.
-  void pop<T extends Object?>([T? result]) => Navigator.of(this).pop<T>(result);
+  /// 7. Pop current route.
+  void pop<T extends Object?>([T? result]) {
+    Navigator.of(this).pop<T>(result);
+  }
 
-  /// Pops routes until the predicate returns true.
-  void popUntil(RoutePredicate predicate) =>
-      Navigator.of(this).popUntil(predicate);
+  /// 8. Pop until a named route is reached.
+  void popUntil(String routeName) {
+    Navigator.of(this).popUntil(ModalRoute.withName(routeName));
+  }
 
-  /// Pops all routes off the navigator.
-  void popAll() => Navigator.of(this).popUntil((route) => route.isFirst);
+  /// 9. Pop current and push a named.
+  Future<T?> popAndPushNamed<T, TO>(String routeName, {Object? arguments}) {
+    return Navigator.of(
+      this,
+    ).popAndPushNamed<T, TO>(routeName, arguments: arguments);
+  }
 }
