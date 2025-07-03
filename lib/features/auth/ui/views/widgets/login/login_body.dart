@@ -34,7 +34,7 @@ class LoginBody extends StatelessWidget {
             const RememberMeAndForgetPassword(),
             const SizedBox(height: 24),
             AppButton(text: 'Login', onTap: () {}),
-            const AccountCheckerRow(title: 'Sign up'),
+            const AccountCheckerRow(title: 'Sign up', replacement: true),
           ],
         ),
       ),

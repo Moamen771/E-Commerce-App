@@ -1,12 +1,17 @@
+import 'package:ecommerce/core/extensions/navigation.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/route_helpers/app_routes.dart';
+import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/utlis/app_colors.dart';
 
 class AccountCheckerRow extends StatelessWidget {
-  const AccountCheckerRow({super.key, required this.title});
+  const AccountCheckerRow({
+    super.key,
+    required this.title,
+    required this.replacement,
+  });
 
   final String title;
+  final bool replacement;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +24,16 @@ class AccountCheckerRow extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            title == 'Login'
-                ? Navigator.pushNamed(context, AppRoutes.loginRoute)
-                : Navigator.pushNamed(context, AppRoutes.signupRoute);
+            if (replacement) {
+              title == 'Login'
+                  ? context.pushReplacementNamed(AppRoutes.loginRoute)
+                  : context.pushReplacementNamed(AppRoutes.signupRoute);
+            } else {
+              title == 'Login'
+                  ? context.pushNamed(AppRoutes.loginRoute)
+                  : context.pushNamed(AppRoutes.signupRoute);
+            }
+            ;
           },
           child: Text(
             title,

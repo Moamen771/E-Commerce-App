@@ -17,7 +17,7 @@ class SignupBody extends StatelessWidget {
               Image.asset(AppAssets.onboardingLogo),
               const SizedBox(height: 30),
               const SignupFormAndSignButton(),
-              const AccountCheckerRow(title: 'Login'),
+              const AccountCheckerRow(title: 'Login', replacement: true),
             ],
           ),
         ),
